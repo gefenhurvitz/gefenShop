@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { getDataAsync , selectproducts} from '../slicers/productSlice'
+import { getDataAsync , selectProducts} from '../slicers/productSlice'
 
 import { Col, Row } from "react-bootstrap";
 import Product from "../components/Product";
@@ -9,7 +9,7 @@ import Product from "../components/Product";
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
-  const products = useSelector(selectproducts);
+  const products = useSelector(selectProducts);
 
   useEffect(() => {
     dispatch(getDataAsync())
