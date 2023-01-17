@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
-// import products from "../products";
+import React, { useEffect } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { getDataAsync , selectproducts} from '../slicers/productSlice'
 
 import { Col, Row } from "react-bootstrap";
 import Product from "../components/Product";
 
-import axios from "axios";
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
+  const products = useSelector(selectproducts);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get("/products");
-      setProducts(data)
-      console.log('calld from homeScreen')
-    };
-    fetchProducts()
-  }, []);
+    dispatch(getDataAsync())
+  }, [dispatch])
 
   return (
     <div>
-      <h1>hello</h1>
+      <h1>HomeScreen</h1>
 
       <Row>
         {products.map((p) => (
