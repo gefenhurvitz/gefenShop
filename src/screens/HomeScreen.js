@@ -20,10 +20,6 @@ const HomeScreen = () => {
     dispatch(getDataAsync());
   }, [dispatch]);
 
-  const timer = setTimeout(() => {
-    console.log('This will run after 1 second!')
-  }, 1000);
-
   return (
     <div>
 
@@ -31,6 +27,7 @@ const HomeScreen = () => {
       <h1>HomeScreen</h1>
       {loading === 'pending' ? (
         <Loader />
+
       ) : (
         <Row>
           {products.map((p) => (

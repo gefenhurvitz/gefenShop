@@ -2,20 +2,20 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import Loader from "../components/Loader";
 import { fetchProds } from "./productAPI";
 
-
 const initialState = {
   productList: [],
-  loading: 'idle',
+  loading: "idle",
 };
 
-export const getDataAsync = createAsyncThunk("products/fetchProds", async () => {
-  const response = await fetchProds();
-  // console.log(response.data)
-  console.log("get product list from server");
-  return response.data;
-});
-
-
+export const getDataAsync = createAsyncThunk(
+  "products/fetchProds",
+  async () => {
+    const response = await fetchProds();
+    // console.log(response.data)
+    console.log("get product list from server");
+    return response.data;
+  }
+);
 
 export const productSlice = createSlice({
   name: "products",
@@ -37,23 +37,20 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(getDataAsync.fulfilled, (state, action) => {
-      console.log(action);
-      state.productList = action.payload;
-      state.loading = 'fulfilled'
-    })
-    .addCase(getDataAsync.pending, (state, action) => {
-      console.log(action);
-      console.log('pending');
-      state.loading = 'pending'
-    })
+      .addCase(getDataAsync.fulfilled, (state, action) => {
+        state.productList = action.payload;
+        state.loading = "fulfilled";
+      })
+      .addCase(getDataAsync.pending, (state, action) => {
+        state.loading = "pending";
+      });
   },
 });
 
 // Action creators are generated for each case reducer function
 export const { increment, decrement, incrementByAmount } = productSlice.actions;
 
-export const selectProducts = (state) => state.products.productList
-export const selectLoading = (state) => state.products.loading
+export const selectProducts = (state) => state.products.productList;
+export const selectLoading = (state) => state.products.loading;
 
 export default productSlice.reducer;

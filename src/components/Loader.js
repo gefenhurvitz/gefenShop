@@ -1,26 +1,22 @@
-import React, { useEffect } from 'react'
-import { Spinner } from 'react-bootstrap'
+import React from "react";
+import { Spinner } from "react-bootstrap";
 
 const Loader = () => {
 
-    console.log('Loader component')
   return (
     <Spinner
-        animation='border'
-        role='status'
-        style={{
-            height:'100px',
-            width:'100px',
-            margin:'auto',
-            display:'block'
-        }}
+      animation="border"
+      role="status"
+      style={{
+        height: "100px",
+        width: "100px",
+        margin: "auto",
+        display: "block",
+      }}
     >
-        <span className='sr-only'>
-            Loading...
-        </span>
-        
+      <span className="sr-only">Loading...</span>
     </Spinner>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;
