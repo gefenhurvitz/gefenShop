@@ -12,14 +12,23 @@ const ProductScreen = () => {
   // const product = products.find((p) => p._id === id);
   const [product, setProduct] = useState([]);
 
+  const [whatsAppMessage, setWhatsAppMessage] = useState(
+    "https://wa.me/972523431188"
+  );
+
   useEffect(() => {
+    setWhatsAppMessage(
+      "https://wa.me/972523431188?text=" +
+      `hey gefen! %0A` + 
+      `i want to buy the products : ${product.name} %0A`
+    )
     const fetchProduct = async () => {
       const { data } = await axios.get(`/products/${id}`);
       setProduct(data);
-      console.log('calld from productScreen')
+      console.log("calld from productScreen");
     };
     fetchProduct();
-  }, [id]);
+  }, [id , product.name]);
 
   return (
     <div>
@@ -85,6 +94,22 @@ const ProductScreen = () => {
                 >
                   Add to Cart
                 </Button>
+{/* 
+                <Button
+                  // href="https://google.com"
+                  href={String(whatsAppMessage)}
+                  target="_blank"
+                  className="btn btn-success"
+                  variant="primary"
+                  // disabled={product.countInStock === 0}
+                  type="button"
+                >
+                  Send WhatsApp
+                </Button> */}
+
+                <a className="btn btn-success" rel="noreferrer" href={whatsAppMessage} target="_blank">
+                  send whatsapp
+                  </a>
               </ListGroup.Item>
             </ListGroup>
           </Card>
