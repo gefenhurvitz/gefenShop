@@ -30,6 +30,11 @@ const ProductScreen = () => {
     fetchProduct();
   }, [id , product.name]);
 
+
+  const AddToCartHandler = () => {
+    console.log(`add to cart: ${id}`)
+  }
+
   return (
     <div>
       <Link to={"/"} className="btn btn-danger my-3">
@@ -88,6 +93,7 @@ const ProductScreen = () => {
 
               <ListGroup.Item>
                 <Button
+                  onClick={AddToCartHandler}
                   className="btn btn-block"
                   disabled={product.countInStock === 0}
                   type="button"
