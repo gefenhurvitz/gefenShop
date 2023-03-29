@@ -33,6 +33,7 @@ const ProductScreen = () => {
 
   const AddToCartHandler = () => {
     console.log(`add to cart: ${id}`)
+    
   }
 
   return (
