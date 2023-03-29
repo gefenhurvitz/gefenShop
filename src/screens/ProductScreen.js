@@ -5,16 +5,19 @@ import { Link, useParams } from "react-router-dom";
 import Rating from "../components/Rating";
 // import products from "../products";
 
+import { useDispatch } from "react-redux";
+
 import axios from "axios";
+import { addCartDataAsync } from "../slicers/cartSlice";
 
 const ProductScreen = () => {
+  const dispatch = useDispatch();
+
   let { id } = useParams();
   // const product = products.find((p) => p._id === id);
   const [product, setProduct] = useState([]);
 
-  const [whatsAppMessage, setWhatsAppMessage] = useState(
-    "https://wa.me/972523431188"
-  );
+  const [whatsAppMessage, setWhatsAppMessage] = useState('');
 
   useEffect(() => {
     setWhatsAppMessage(
@@ -33,7 +36,8 @@ const ProductScreen = () => {
 
   const AddToCartHandler = () => {
     console.log(`add to cart: ${id}`)
-    
+    dispatch(addCartDataAsync())
+
   }
 
   return (

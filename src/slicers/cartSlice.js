@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const addCartDataAsync = createAsyncThunk(
-  "products/fetchProds",
+  "cartProducts/addProduct",
   async () => {
     const response = await addProduct();
     // console.log(response.data)
@@ -26,8 +26,7 @@ export const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(addCartDataAsync.fulfilled, (state, action) => {
-
-      console.log('called addCartDataAsync extra reducer ')
+      console.log("called addCartDataAsync extra reducer ");
       // make cost for the item recived from the API call
       const item = action.payload;
       // check if that item is already excist in the cart
